@@ -1,0 +1,379 @@
+// Dimension Table And Fact Table
+CREATE TABLE Timee1 (
+ time_id INT PRIMARY KEY,
+ event_date DATE NOT NULL,  -- Changed "date" to "event_date"
+  day_of_week VARCHAR(20),
+  month INT,
+  year INT,
+  hour INT,
+  minute INT
+  );
+INSERT INTO Timee1 (time_id, event_date, day_of_week, month, year, hour, minute) VALUES
+(1, TO_DATE('2023-10-01', 'YYYY-MM-DD'), 'Sunday', 10, 2023, 9, 15);
+INSERT INTO Timee1 (time_id, event_date, day_of_week, month, year, hour, minute) VALUES
+(2, TO_DATE('2023-10-02', 'YYYY-MM-DD'), 'Monday', 10, 2023, 14, 30);
+INSERT INTO Timee1 (time_id, event_date, day_of_week, month, year, hour, minute) VALUES
+(3, TO_DATE('2023-10-03', 'YYYY-MM-DD'), 'Tuesday', 10, 2023, 10, 45);
+INSERT INTO Timee1 (time_id, event_date, day_of_week, month, year, hour, minute) VALUES
+(4, TO_DATE('2023-10-04', 'YYYY-MM-DD'), 'Wednesday', 10, 2023, 11, 00);
+INSERT INTO Timee1 (time_id, event_date, day_of_week, month, year, hour, minute) VALUES
+(5, TO_DATE('2023-10-05', 'YYYY-MM-DD'), 'Thursday', 10, 2023, 13, 20);
+INSERT INTO Timee1 (time_id, event_date, day_of_week, month, year, hour, minute) VALUES
+(6, TO_DATE('2023-10-06', 'YYYY-MM-DD'), 'Friday', 10, 2023, 17, 55);
+INSERT INTO Timee1 (time_id, event_date, day_of_week, month, year, hour, minute) VALUES
+(7, TO_DATE('2023-10-07', 'YYYY-MM-DD'), 'Saturday', 10, 2023, 19, 10);
+INSERT INTO Timee1 (time_id, event_date, day_of_week, month, year, hour, minute) VALUES
+(8, TO_DATE('2023-10-08', 'YYYY-MM-DD'), 'Sunday', 10, 2023, 12, 05);
+INSERT INTO Timee1 (time_id, event_date, day_of_week, month, year, hour, minute) VALUES
+(9, TO_DATE('2023-10-09', 'YYYY-MM-DD'), 'Monday', 10, 2023, 8, 50);
+INSERT INTO Timee1 (time_id, event_date, day_of_week, month, year, hour, minute) VALUES
+(10, TO_DATE('2023-10-10', 'YYYY-MM-DD'), 'Tuesday', 10, 2023, 15, 40);
+
+CREATE TABLE Book1 (
+book_id INT PRIMARY KEY,
+book_title VARCHAR(255) NOT NULL,
+author_name VARCHAR(255),
+genre VARCHAR(100),
+publisher VARCHAR(255),
+publication_year INT,
+issue_book VARCHAR(3) -- Could be 'Yes' or 'No'
+ );
+INSERT INTO Book1 (book_id, book_title, author_name, genre, publisher, publication_year, issue_book) VALUES
+(1, 'The Catcher in the Rye', 'J.D. Salinger', 'Fiction', 'Little, Brown', 1951, 'Yes');
+INSERT INTO Book1 (book_id, book_title, author_name, genre, publisher, publication_year, issue_book) VALUES
+(2, '1984', 'George Orwell', 'Dystopian', 'Harvill Secker', 1949, 'Yes');
+INSERT INTO Book1 (book_id, book_title, author_name, genre, publisher, publication_year, issue_book) VALUES
+(3, 'To Kill a Mockingbird', 'Harper Lee', 'Fiction', 'J.B. Lippincott', 1960, 'No');
+INSERT INTO Book1 (book_id, book_title, author_name, genre, publisher, publication_year, issue_book) VALUES
+(4, 'Moby Dick', 'Herman Melville', 'Adventure', 'Harper & Bros', 1851, 'Yes');
+Enter value for bros: 4
+old   2: (4, 'Moby Dick', 'Herman Melville', 'Adventure', 'Harper & Bros', 1851, 'Yes')
+new   2: (4, 'Moby Dick', 'Herman Melville', 'Adventure', 'Harper 4', 1851, 'Yes')
+INSERT INTO Book1 (book_id, book_title, author_name, genre, publisher, publication_year, issue_book) VALUES
+(5, 'The Great Gatsby', 'F. Scott Fitzgerald', 'Fiction', 'Scribner', 1925, 'Yes');
+INSERT INTO Book1 (book_id, book_title, author_name, genre, publisher, publication_year, issue_book) VALUES
+(6, 'Brave New World', 'Aldous Huxley', 'Dystopian', 'Chatto & Windus', 1932, 'No');
+Enter value for windus: 4
+old   2: (6, 'Brave New World', 'Aldous Huxley', 'Dystopian', 'Chatto & Windus', 1932, 'No')
+new   2: (6, 'Brave New World', 'Aldous Huxley', 'Dystopian', 'Chatto 4', 1932, 'No')
+INSERT INTO Book1 (book_id, book_title, author_name, genre, publisher, publication_year, issue_book) VALUES
+(7, 'The Odyssey', 'Homer', 'Epic', 'Penguin Classics', -800, 'Yes');
+INSERT INTO Book1 (book_id, book_title, author_name, genre, publisher, publication_year, issue_book) VALUES
+(8, 'War and Peace', 'Leo Tolstoy', 'Historical', 'The Russian Messenger', 1869, 'Yes');
+INSERT INTO Book1 (book_id, book_title, author_name, genre, publisher, publication_year, issue_book) VALUES
+(9, 'Pride and Prejudice', 'Jane Austen', 'Romance', 'T. Egerton', 1813, 'Yes');
+INSERT INTO Book1 (book_id, book_title, author_name, genre, publisher, publication_year, issue_book) VALUES
+(10, 'Frankenstein', 'Mary Shelley', 'Gothic', 'Lackington', 1818, 'No');
+
+CREATE TABLE Member1 (
+ member_id INT PRIMARY KEY,
+ first_name VARCHAR(100) NOT NULL,
+ last_name VARCHAR(100) NOT NULL,
+ membership_type VARCHAR(50),
+ membership_start_date DATE,
+ membership_expiry_date DATE,
+ address VARCHAR(255),
+ contact_number VARCHAR(15)
+ );
+INSERT INTO Member1 (member_id, first_name, last_name, membership_type, membership_start_date, membership_expiry_date, address, contact_number) VALUES
+(1, 'John', 'Doe', 'Premium', TO_DATE('2023-01-01', 'YYYY-MM-DD'), TO_DATE('2024-01-01', 'YYYY-MM-DD'), '123 Elm St', '555-1234');
+INSERT INTO Member1 (member_id, first_name, last_name, membership_type, membership_start_date, membership_expiry_date, address, contact_number) VALUES
+(2, 'Jane', 'Smith', 'Basic', TO_DATE('2023-05-15', 'YYYY-MM-DD'), TO_DATE('2023-11-15', 'YYYY-MM-DD'), '456 Oak St', '555-5678');
+INSERT INTO Member1 (member_id, first_name, last_name, membership_type, membership_start_date, membership_expiry_date, address, contact_number) VALUES
+(3, 'Bob', 'Johnson', 'Premium', TO_DATE('2023-02-20', 'YYYY-MM-DD'), TO_DATE('2024-02-20', 'YYYY-MM-DD'), '789 Pine St', '555-9876');
+INSERT INTO Member1 (member_id, first_name, last_name, membership_type, membership_start_date, membership_expiry_date, address, contact_number) VALUES
+(4, 'Alice', 'Brown', 'Basic', TO_DATE('2023-03-30', 'YYYY-MM-DD'), TO_DATE('2023-09-30', 'YYYY-MM-DD'), '321 Birch St', '555-4321');
+INSERT INTO Member1 (member_id, first_name, last_name, membership_type, membership_start_date, membership_expiry_date, address, contact_number) VALUES
+(5, 'Charlie', 'Green', 'Premium', TO_DATE('2022-12-12', 'YYYY-MM-DD'), TO_DATE('2023-12-12', 'YYYY-MM-DD'), '654 Cedar St', '555-8765');
+INSERT INTO Member1 (member_id, first_name, last_name, membership_type, membership_start_date, membership_expiry_date, address, contact_number) VALUES
+(6, 'Dave', 'White', 'Basic', TO_DATE('2023-06-25', 'YYYY-MM-DD'), TO_DATE('2023-12-25', 'YYYY-MM-DD'), '987 Maple St', '555-5432');
+INSERT INTO Member1 (member_id, first_name, last_name, membership_type, membership_start_date, membership_expiry_date, address, contact_number) VALUES
+(7, 'Eve', 'Black', 'Premium', TO_DATE('2023-07-01', 'YYYY-MM-DD'), TO_DATE('2024-07-01', 'YYYY-MM-DD'), '111 Spruce St', '555-6543');
+INSERT INTO Member1 (member_id, first_name, last_name, membership_type, membership_start_date, membership_expiry_date, address, contact_number) VALUES
+ (8, 'Frank', 'Blue', 'Basic', TO_DATE('2023-08-10', 'YYYY-MM-DD'), TO_DATE('2024-02-10', 'YYYY-MM-DD'), '222 Cherry St', '555-7654');
+INSERT INTO Member1 (member_id, first_name, last_name, membership_type, membership_start_date, membership_expiry_date, address, contact_number) VALUES
+(9, 'Grace', 'Gray', 'Premium', TO_DATE('2023-09-05', 'YYYY-MM-DD'), TO_DATE('2024-09-05', 'YYYY-MM-DD'), '333 Ash St', '555-1235');
+INSERT INTO Member1 (member_id, first_name, last_name, membership_type, membership_start_date, membership_expiry_date, address, contact_number) VALUES
+(10, 'Hank', 'Orange', 'Basic', TO_DATE('2023-10-01', 'YYYY-MM-DD'), TO_DATE('2024-04-01', 'YYYY-MM-DD'), '444 Beech St', '555-2345');
+
+CREATE TABLE Branch1 (
+ branch_id INT PRIMARY KEY,
+ branch_name VARCHAR(255) NOT NULL,
+ branch_location VARCHAR(255),
+contact_number VARCHAR(15)
+ );
+INSERT INTO Branch1 (branch_id, branch_name, branch_location, contact_number) VALUES
+(1, 'Central Library', 'Downtown', '555-1111');
+INSERT INTO Branch1 (branch_id, branch_name, branch_location, contact_number) VALUES
+(2, 'Westside Branch', 'Westside', '555-2222');
+INSERT INTO Branch1 (branch_id, branch_name, branch_location, contact_number) VALUES
+(3, 'Eastside Branch', 'Eastside', '555-3333');
+INSERT INTO Branch1 (branch_id, branch_name, branch_location, contact_number) VALUES
+(4, 'Northside Branch', 'Northside', '555-4444');
+INSERT INTO Branch1 (branch_id, branch_name, branch_location, contact_number) VALUES
+(5, 'Southside Branch', 'Southside', '555-5555');
+INSERT INTO Branch1 (branch_id, branch_name, branch_location, contact_number) VALUES
+(6, 'City Library', 'City Center', '555-6666');
+INSERT INTO Branch1 (branch_id, branch_name, branch_location, contact_number) VALUES
+(7, 'Country Branch', 'Countryside', '555-7777');
+INSERT INTO Branch1 (branch_id, branch_name, branch_location, contact_number) VALUES
+(8, 'Beach Branch', 'Beachside', '555-8888');
+INSERT INTO Branch1 (branch_id, branch_name, branch_location, contact_number) VALUES
+(9, 'Mountain Branch', 'Mountain Ridge', '555-9999');
+INSERT INTO Branch1 (branch_id, branch_name, branch_location, contact_number) VALUES
+(10, 'Valley Branch', 'Valley Grove', '555-0000');
+
+CREATE TABLE Librarian1 (
+librarian_id INT PRIMARY KEY,
+first_name VARCHAR(100) NOT NULL,
+last_name VARCHAR(100) NOT NULL,
+position VARCHAR(100)
+);
+
+INSERT INTO Librarian1 (librarian_id, first_name, last_name, position) VALUES
+(1, 'Emily', 'Wilson', 'Head Librarian');
+INSERT INTO Librarian1 (librarian_id, first_name, last_name, position) VALUES
+(2, 'Peter', 'Taylor', 'Assistant Librarian');
+INSERT INTO Librarian1 (librarian_id, first_name, last_name, position) VALUES
+(3, 'Susan', 'Martinez', 'Branch Manager');
+INSERT INTO Librarian1 (librarian_id, first_name, last_name, position) VALUES
+(4, 'George', 'Thompson', 'Librarian Assistant');
+INSERT INTO Librarian1 (librarian_id, first_name, last_name, position) VALUES
+(5, 'Lily', 'Perez', 'Chief Archivist');
+INSERT INTO Librarian1 (librarian_id, first_name, last_name, position) VALUES
+(6, 'Robert', 'Harris', 'Catalog Manager');
+INSERT INTO Librarian1 (librarian_id, first_name, last_name, position) VALUES
+(7, 'Olivia', 'Lewis', 'Senior Librarian');
+INSERT INTO Librarian1 (librarian_id, first_name, last_name, position) VALUES
+(8, 'Michael', 'Clark', 'Reference Librarian');
+INSERT INTO Librarian1 (librarian_id, first_name, last_name, position) VALUES
+ (9, 'Sarah', 'Walker', 'Children Librarian');
+INSERT INTO Librarian1 (librarian_id, first_name, last_name, position) VALUES
+(10, 'James', 'Allen', 'Circulation Clerk');
+
+CREATE TABLE Facts1 (
+transaction_id INT PRIMARY KEY,
+time_id INT,
+book_id INT,
+member_id INT,
+librarian_id INT,
+branch_id INT,
+transaction_type VARCHAR(50),
+due_date DATE,
+return_date DATE,
+fine_amount DECIMAL(10, 2)
+);
+ALTER TABLE Facts1
+ADD CONSTRAINT fk_time1 FOREIGN KEY (time_id) REFERENCES Timee1(time_id);
+ALTER TABLE Facts1
+ADD CONSTRAINT fk_book1 FOREIGN KEY (book_id) REFERENCES Book1(book_id);
+ALTER TABLE Facts1
+ADD CONSTRAINT fk_member1 FOREIGN KEY (member_id) REFERENCES Member1(member_id);
+ALTER TABLE Facts1
+ADD CONSTRAINT fk_librarian1 FOREIGN KEY (librarian_id) REFERENCES Librarian1(librarian_id);
+ALTER TABLE Facts1
+ADD CONSTRAINT fk_branch1 FOREIGN KEY (branch_id) REFERENCES Branch1(branch_id);
+
+INSERT INTO Facts1 (transaction_id, time_id, book_id, member_id, librarian_id, branch_id, transaction_type, due_date, return_date, fine_amount) VALUES
+(1, 1, 1, 1, 1, 1, 'Borrow', TO_DATE('2023-10-15', 'YYYY-MM-DD'), TO_DATE('2023-10-13', 'YYYY-MM-DD'), 0.00);
+INSERT INTO Facts1 (transaction_id, time_id, book_id, member_id, librarian_id, branch_id, transaction_type, due_date, return_date, fine_amount) VALUES
+(2, 2, 2, 2, 2, 2, 'Return', TO_DATE('2023-10-16', 'YYYY-MM-DD'), TO_DATE('2023-10-16', 'YYYY-MM-DD'), 0.00);
+INSERT INTO Facts1 (transaction_id, time_id, book_id, member_id, librarian_id, branch_id, transaction_type, due_date, return_date, fine_amount) VALUES
+(3, 3, 3, 3, 3, 3, 'Borrow', TO_DATE('2023-10-17', 'YYYY-MM-DD'), TO_DATE('2023-10-20', 'YYYY-MM-DD'), 2.00);
+INSERT INTO Facts1 (transaction_id, time_id, book_id, member_id, librarian_id, branch_id, transaction_type, due_date, return_date, fine_amount) VALUES
+(4, 4, 4, 4, 4, 4, 'Borrow', TO_DATE('2023-10-18', 'YYYY-MM-DD'), NULL, 0.00);
+INSERT INTO Facts1 (transaction_id, time_id, book_id, member_id, librarian_id, branch_id, transaction_type, due_date, return_date, fine_amount) VALUES
+(5, 5, 5, 5, 5, 5, 'Return', TO_DATE('2023-10-19', 'YYYY-MM-DD'), NULL, 0.00);
+INSERT INTO Facts1 (transaction_id, time_id, book_id, member_id, librarian_id, branch_id, transaction_type, due_date, return_date, fine_amount) VALUES
+(6, 6, 6, 6, 6, 6, 'Borrow', TO_DATE('2023-10-20', 'YYYY-MM-DD'), NULL, 0.00);
+INSERT INTO Facts1 (transaction_id, time_id, book_id, member_id, librarian_id, branch_id, transaction_type, due_date, return_date, fine_amount) VALUES
+(7, 7, 7, 7, 7, 7, 'Return', TO_DATE('2023-10-21', 'YYYY-MM-DD'), TO_DATE('2023-10-21', 'YYYY-MM-DD'), 0.00);
+INSERT INTO Facts1 (transaction_id, time_id, book_id, member_id, librarian_id, branch_id, transaction_type, due_date, return_date, fine_amount) VALUES
+(8, 8, 8, 8, 8, 8, 'Borrow', TO_DATE('2023-10-22', 'YYYY-MM-DD'), NULL, 0.00);
+INSERT INTO Facts1 (transaction_id, time_id, book_id, member_id, librarian_id, branch_id, transaction_type, due_date, return_date, fine_amount) VALUES
+(9, 9, 9, 9, 9, 9, 'Borrow', TO_DATE('2023-10-23', 'YYYY-MM-DD'), TO_DATE('2023-10-25', 'YYYY-MM-DD'), 1.00);
+INSERT INTO Facts1 (transaction_id, time_id, book_id, member_id, librarian_id, branch_id, transaction_type, due_date, return_date, fine_amount) VALUES
+(10, 10, 10, 10, 10, 10, 'Return', TO_DATE('2023-10-24', 'YYYY-MM-DD'), TO_DATE('2023-10-24', 'YYYY-MM-DD'), 0.00);
+
+select * from Timee1;
+ 
+select * from Book1;
+ 
+select * from Member1;
+ 
+select * from Branch1;
+ 
+select * from Librarian1;
+ 
+select * from Facts1;
+ 
+// Olap Operation
+•	Roll up: Aggregate (Roll-Up) by Genre - Total Borrowed Books per Genre :-
+Query
+SELECT B.genre, COUNT(F.transaction_id) AS total_borrows
+FROM Facts1 F
+JOIN Book1 B ON F.book_id = B.book_id
+WHERE F.transaction_type = 'Borrow'
+GROUP BY B.genre
+ORDER BY total_borrows DESC;
+Output :-
+ 
+•	Roll-Up - Monthly Fine Amount Collected
+Query
+SELECT T.month, SUM(F.fine_amount) AS total_fine
+FROM Facts1 F
+JOIN Timee1 T ON F.time_id = T.time_id
+WHERE F.fine_amount > 0
+GROUP BY T.month
+ORDER BY T.month;
+Output :-
+ 
+•	Roll-Up - Summarize Data by Higher Levels of a Hierarchy
+Query
+SELECT 
+    t.year, 
+    t.month, 
+    COUNT(f.transaction_id) AS books_borrowed
+FROM 
+    Facts1 f
+JOIN 
+    Timee1 t ON f.time_id = t.time_id
+WHERE 
+    f.transaction_type = 'Borrow'
+GROUP BY 
+    ROLLUP(t.year, t.month)
+ORDER BY 
+    t.year, t.month;
+Output :-
+ 
+•	Drill-Down - Show Detailed Transactions for a Specific Book (e.g., '1984') :-
+Query
+SELECT F.transaction_id, M.first_name || ' ' || M.last_name AS member_name, 
+       F.transaction_type, F.due_date, F.return_date, F.fine_amount
+FROM Facts1 F
+JOIN Book1 B ON F.book_id = B.book_id
+JOIN Member1 M ON F.member_id = M.member_id
+WHERE B.book_title = '1984';
+Output :-
+ 
+•	Slice: Filter a Subset of Data on One Dimension :-
+Query
+SELECT 
+    b.branch_name, 
+    COUNT(f.transaction_id) AS transactions
+FROM 
+    Facts1 f
+JOIN 
+    Branch1 b ON f.branch_id = b.branch_id
+WHERE 
+    b.branch_name = 'Downtown Library'
+GROUP BY 
+    b.branch_name;
+
+Output :-
+ 
+
+•	Dice: Filter Multiple Dimensions for Subset Analysis :-
+Query
+SELECT 
+    b.branch_name, t.year, 
+    COUNT(f.transaction_id) AS transactions
+FROM 
+    Facts1 f
+JOIN 
+    Branch1 b ON f.branch_id = b.branch_id
+JOIN 
+    Timee1 t ON f.time_id = t.time_id
+WHERE 
+    b.branch_name IN ('Downtown Library', 'City Central') 
+    AND t.year IN (2023, 2024)
+GROUP BY 
+    b.branch_name, t.year
+ORDER BY 
+    b.branch_name, t.year;
+
+
+Output :-
+ 
+•	Pivot: Transform Rows into Columns :-
+Query
+SELECT
+    t.year,
+    SUM(CASE WHEN TO_CHAR(TO_DATE(t.month, 'MM'), 'Month') = 'January' THEN 1 ELSE 0 END) AS Jan,
+    SUM(CASE WHEN TO_CHAR(TO_DATE(t.month, 'MM'), 'Month') = 'February' THEN 1 ELSE 0 END) AS Feb,
+    SUM(CASE WHEN TO_CHAR(TO_DATE(t.month, 'MM'), 'Month') = 'March' THEN 1 ELSE 0 END) AS Mar,
+    SUM(CASE WHEN TO_CHAR(TO_DATE(t.month, 'MM'), 'Month') = 'April' THEN 1 ELSE 0 END) AS Apr,
+    SUM(CASE WHEN TO_CHAR(TO_DATE(t.month, 'MM'), 'Month') = 'May' THEN 1 ELSE 0 END) AS May,
+    SUM(CASE WHEN TO_CHAR(TO_DATE(t.month, 'MM'), 'Month') = 'June' THEN 1 ELSE 0 END) AS Jun,
+    SUM(CASE WHEN TO_CHAR(TO_DATE(t.month, 'MM'), 'Month') = 'July' THEN 1 ELSE 0 END) AS Jul,
+    SUM(CASE WHEN TO_CHAR(TO_DATE(t.month, 'MM'), 'Month') = 'August' THEN 1 ELSE 0 END) AS Aug,
+    SUM(CASE WHEN TO_CHAR(TO_DATE(t.month, 'MM'), 'Month') = 'September' THEN 1 ELSE 0 END) AS Sep,
+    SUM(CASE WHEN TO_CHAR(TO_DATE(t.month, 'MM'), 'Month') = 'October' THEN 1 ELSE 0 END) AS Oct,
+    SUM(CASE WHEN TO_CHAR(TO_DATE(t.month, 'MM'), 'Month') = 'November' THEN 1 ELSE 0 END) AS Nov,
+    SUM(CASE WHEN TO_CHAR(TO_DATE(t.month, 'MM'), 'Month') = 'December' THEN 1 ELSE 0 END) AS Dec
+FROM
+    Facts1 f
+JOIN
+    Timee1 t ON f.time_id = t.time_id
+WHERE
+    f.transaction_type = 'Borrow'
+GROUP BY
+    t.year
+ORDER BY
+    t.year;
+
+// ALi Olap Operation
+-- Table for Customers
+CREATE TABLE Customers221204 (
+    CustomerID INT PRIMARY KEY,
+    Name NVARCHAR(100),
+    ContactNumber NVARCHAR(15),
+    Email NVARCHAR(100),
+    JoinDate DATE
+);
+
+-- Table for Orders
+CREATE TABLE Orders221204 (
+    OrderID INT PRIMARY KEY,
+    OrderDate DATETIME,
+    CustomerID INT,
+    TotalAmount DECIMAL(10,2),
+    PaymentMethod NVARCHAR(50),
+    FOREIGN KEY (CustomerID) REFERENCES Customers221204(CustomerID)  -- Reference to Customers221204
+);
+
+-- Insert data into Customers221204
+INSERT INTO Customers221204 (CustomerID, Name, ContactNumber, Email, JoinDate)
+VALUES 
+(1, 'Alice Smith', '1234567890', 'alice@example.com', '2023-01-01'),
+(2, 'Bob Johnson', '2345678901', 'bob@example.com', '2023-02-01'),
+(3, 'Charlie Brown', '3456789012', 'charlie@example.com', '2023-03-01'),
+(4, 'Diana Prince', '4567890123', 'diana@example.com', '2023-04-01');
+
+-- Insert data into Orders221204
+INSERT INTO Orders221204 (OrderID, OrderDate, CustomerID, TotalAmount, PaymentMethod)
+VALUES 
+(101, '2023-01-10', 1, 200.50, 'Credit Card'),
+(102, '2023-01-15', 2, 150.75, 'Cash'),
+(103, '2023-01-20', 1, 100.00, 'Credit Card'),
+(104, '2023-02-10', 3, 250.25, 'Debit Card'),
+(105, '2023-03-05', 4, 300.00, 'Cash');
+
+-- Slice
+SELECT * FROM Orders221204
+WHERE CustomerID = 1;
+
+-- Dice
+SELECT * FROM Orders221204
+WHERE PaymentMethod = 'Credit Card' AND TotalAmount BETWEEN 100 AND 200;
+
+-- Roll-Up
+SELECT CustomerID, SUM(TotalAmount) AS TotalSpent
+FROM Orders221204
+GROUP BY CustomerID;
+
+-- Drill-Down
+SELECT * FROM Orders221204
+WHERE OrderDate = '2023-01-10';
+
+//
