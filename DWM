@@ -376,4 +376,58 @@ GROUP BY CustomerID;
 SELECT * FROM Orders221204
 WHERE OrderDate = '2023-01-10';
 
-//
+//Page Rank
+import numpy as np 
+
+def page_rank(matrix, num_iterations=100, d=0.85):
+    n = matrix.shape[0]
+    
+    # Normalize the adjacency matrix to make it a stochastic matrix
+    column_sums = matrix.sum(axis=0)
+    stochastic_matrix = np.divide(matrix, column_sums, where=column_sums != 0)
+    
+    # Initialize ranks to 1/N
+    ranks = np.ones(n) / n
+    
+    # Run the PageRank algorithm for the specified number of iterations
+    for _ in range(num_iterations):
+        ranks = (1 - d) / n + d * stochastic_matrix.T.dot(ranks)
+        
+    return ranks
+
+# Example adjacency matrix
+adj_matrix = np.array([[1, 0, 1, 0],
+                       [0, 1, 0, 1],
+                       [0, 0, 0, 1],
+                       [1, 1, 1, 1]])
+
+page_rank_score = page_rank(adj_matrix)
+print("PageRank Scores:", page_rank_score)
+
+//Data Dyscretization
+import pandas as pd
+
+# Sample data
+data = {'Age': [23, 45, 67, 12, 39, 78, 56, 32, 40, 27]}
+df = pd.DataFrame(data)
+
+# Define number of bins and apply equal-width binning
+df['Age_binned'] = pd.cut(df['Age'], bins=3, labels=['Low', 'Medium', 'High'])
+
+# Display result
+print(df)
+
+// Data Visualization
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+# Generate dummy data for ages
+np.random.seed(0)  # For reproducibility
+ages = np.random.randint(18, 80, size=100)  
+# Create a DataFrame
+df = pd.DataFrame({'Age': ages})# Define the number of bins for discretization
+plt.hist(df['Age'], bins=5, color='skyblue', edgecolor='black')
+plt.xlabel('Age')
+plt.ylabel('Frequency')
+plt.title('Age Distribution Histogram')
+plt.show()
