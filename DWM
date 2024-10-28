@@ -520,3 +520,70 @@ for i in range(1000):  # Increase iterations or set a convergence condition for 
     rank = (1 - d) / n + d * adj_matrix.T @ (rank / out_degree)
 print("Page Rank for Page A,B,C:")
 print(rank)
+
+// SQL
+CREATE TABLE Customers221204 (
+CustomerID INT PRIMARY KEY,
+Name VARCHAR(100),
+ContactNumber VARCHAR(15),
+Email VARCHAR(100),
+JoinDate DATE
+);
+CREATE TABLE Orders221204 (
+    OrderID INT PRIMARY KEY,
+    OrderDate DATE,  -- or use TIMESTAMP if you need time precision
+    CustomerID INT,
+    TotalAmount DECIMAL(10,2),
+    PaymentMethod VARCHAR2(50),
+    FOREIGN KEY (CustomerID) REFERENCES Customers221204(CustomerID)
+);
+
+-- Insert data into Customers221204
+
+INSERT INTO Customers221204 (CustomerID, Name, ContactNumber, Email, JoinDate)
+VALUES (1, 'Alice Smith', '1234567890', 'alice@example.com', TO_DATE('2023-01-01', 'YYYY-MM-DD'));
+
+INSERT INTO Customers221204 (CustomerID, Name, ContactNumber, Email, JoinDate)
+VALUES (2, 'Bob Johnson', '2345678901', 'bob@example.com', TO_DATE('2023-02-01', 'YYYY-MM-DD'));
+
+INSERT INTO Customers221204 (CustomerID, Name, ContactNumber, Email, JoinDate)
+VALUES (3, 'Charlie Brown', '3456789012', 'charlie@example.com', TO_DATE('2023-03-01', 'YYYY-MM-DD'));
+
+INSERT INTO Customers221204 (CustomerID, Name, ContactNumber, Email, JoinDate)
+VALUES (4, 'Diana Prince', '4567890123', 'diana@example.com', TO_DATE('2023-04-01', 'YYYY-MM-DD'));
+
+
+-- Insert data into Orders221204
+
+INSERT INTO Orders221204 (OrderID, OrderDate, CustomerID, TotalAmount, PaymentMethod)
+VALUES (101, TO_DATE('2023-01-10', 'YYYY-MM-DD'), 1, 200.50, 'Credit Card');
+
+INSERT INTO Orders221204 (OrderID, OrderDate, CustomerID, TotalAmount, PaymentMethod)
+VALUES (102, TO_DATE('2023-01-15', 'YYYY-MM-DD'), 2, 150.75, 'Cash');
+
+INSERT INTO Orders221204 (OrderID, OrderDate, CustomerID, TotalAmount, PaymentMethod)
+VALUES (103, TO_DATE('2023-01-20', 'YYYY-MM-DD'), 1, 100.00, 'Credit Card');
+
+INSERT INTO Orders221204 (OrderID, OrderDate, CustomerID, TotalAmount, PaymentMethod)
+VALUES (104, TO_DATE('2023-02-10', 'YYYY-MM-DD'), 3, 250.25, 'Debit Card');
+
+INSERT INTO Orders221204 (OrderID, OrderDate, CustomerID, TotalAmount, PaymentMethod)
+VALUES (105, TO_DATE('2023-03-05', 'YYYY-MM-DD'), 4, 300.00, 'Cash');
+
+-- Slice
+SELECT * FROM Orders221204
+WHERE CustomerID = 1;
+
+-- Dice
+SELECT * FROM Orders221204
+WHERE PaymentMethod = 'Credit Card' AND TotalAmount BETWEEN 100 AND 200;
+
+-- Roll-Up
+SELECT CustomerID, SUM(TotalAmount) AS TotalSpent
+FROM Orders221204
+GROUP BY CustomerID;
+
+-- Drill-Down
+SELECT * FROM Orders221204
+WHERE OrderDate = TO_DATE('2023-01-10', 'YYYY-MM-DD');
+
