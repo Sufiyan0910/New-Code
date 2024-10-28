@@ -431,3 +431,92 @@ plt.xlabel('Age')
 plt.ylabel('Frequency')
 plt.title('Age Distribution Histogram')
 plt.show()
+
+// Fazal DATA VIS
+import pandas as pd
+from matplotlib import pyplot as plt
+x =[1, 2, 3]
+y = [1, 4, 9]
+plt.plot(x, y)
+plt.title( "test plot" )
+plt.xlabel("x")
+plt.ylabel("y")
+plt.show()
+
+x= [1, 2, 3]
+y =[1, 4, 9]
+z = [10, 5, 0]
+plt.plot(x, y)
+plt.plot(x, z)
+plt.title( "test plot")
+plt.xlabel("x")
+plt.ylabel("y and z")
+plt.legend([ "this is y", "this is z"])
+plt.show()
+
+sample_data = pd.read_csv('sample_data.csv')
+sample_data
+
+plt.plot (sample_data.column_a, sample_data.column_b)
+plt.plot(sample_data.column_a, sample_data.column_c)
+plt.show()
+
+plt.plot (sample_data.column_a, sample_data.column_b, 'o')
+plt.plot(sample_data.column_a, sample_data.column_c)
+plt.show()
+
+data = pd.read_csv('countries.csv')
+print (sample_data )
+print ("---------------------------------------")
+print ( data)
+print ("---------------------------------------")
+# Compare the population growth in the US and China
+us = data[data.country == 'United States']
+print (us)
+print ("---------------------------------------")
+us1=data.country == 'United States'
+print (us1)
+print ("---------------------------------------")
+china = data[data.country == 'China']
+print (china)
+print ("---------------------------------------")
+plt.plot(us.year, us.population)
+plt.show()
+print ("---------------------------------------")
+plt.plot(us.year, us.population / 10**6)
+plt.plot(china.year, china.population/ 10**6)
+plt.legend([ 'United States', 'China'])
+plt.xlabel('year')
+plt.ylabel('population')
+plt.show()
+print ("---------------------------------------")
+plt.plot(us.year, us.population / us.population.iloc[0] * 100)
+plt.plot(china.year, china.population / china.population.iloc[0] * 100)
+plt.legend(['United States', 'China'])
+plt.xlabel('year')
+plt.ylabel('population growth (first year = 100)')
+plt.show() 
+// website csdojo.io
+
+// Fazal Page Rank
+import numpy as np
+# Define adjacency matrix
+adj_matrix = np.array([
+    [0, 0, 1],
+    [1, 0, 0],
+    [1, 1, 0]
+])
+# Number of nodes
+n = len(adj_matrix)
+# Initial rank vector
+rank = np.ones(n) / n
+# Damping factor
+d = 0.85
+# Calculate the out-degree for each node, treating sink nodes as having out-degree n
+out_degree = np.sum(adj_matrix, axis=1)
+out_degree[out_degree == 0] = n
+# Run PageRank for a fixed number of iterations
+for i in range(1000):  # Increase iterations or set a convergence condition for better accuracy
+    rank = (1 - d) / n + d * adj_matrix.T @ (rank / out_degree)
+print("Page Rank for Page A,B,C:")
+print(rank)
